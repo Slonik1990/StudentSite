@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet
+
 public class CreateStudent extends HttpServlet {
     DataMaster dataMaster = new DataAtFile();
 

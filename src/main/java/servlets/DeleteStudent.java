@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-@WebServlet
+
 public class DeleteStudent extends HttpServlet {
     DataMaster dataMaster = new DataAtFile();
 

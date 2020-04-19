@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-@WebServlet
+
 public class ReadStudent extends HttpServlet {
     DataMaster dataMaster = new DataAtFile();
 
