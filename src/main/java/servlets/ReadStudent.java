@@ -1,7 +1,9 @@
 package servlets;
 
 import model.Student;
-import repository.DataFile;
+import repository.DataAtFile;
+import repository.DataAtList;
+import repository.DataMaster;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,15 +17,12 @@ import java.util.List;
 
 @WebServlet
 public class ReadStudent extends HttpServlet {
+    DataMaster dataMaster = new DataAtFile();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
-        DataFile dataFile = new DataFile();
-
-        //каждый студент из БД преобразуется в лист с его параметрами и производится проверка на наличие
-        //всех не пустых параметров из HTTP запроса
-        //данный подход позволяет одинаково обрабатывать любые комбинации параметров заданных в поиске
 
 
         //считывание параметров из HTTP запроса
@@ -31,7 +30,7 @@ public class ReadStudent extends HttpServlet {
         String firstName = req.getParameter("firstName");
 
         //из не пустых параметров создается лист
-        List notNullParameters = new LinkedList();
+        List notNullParameters = new ArrayList();
         if (lastName.length() > 0) notNullParameters.add(lastName);
         if (firstName.length() > 0) notNullParameters.add(firstName);
         if (req.getParameter("mark").length() > 0) {
@@ -41,7 +40,7 @@ public class ReadStudent extends HttpServlet {
 
 
         //студенты преобразуются в листы с параметрами и происходит сравнение с пришедшими парамеирами
-        List<Student> everyBody = dataFile.getData();
+        List<Student> everyBody = dataMaster.getData();
         List<Student> satisfied = new LinkedList<>();
         for (Student s : everyBody) {
             List studFields = new ArrayList();

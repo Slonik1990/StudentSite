@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class DataFile implements DataMaster {
+public class DataAtFile implements DataMaster {
 
     private String path = System.getProperty("user.home") + File.separator  +"students.json";
     @Override

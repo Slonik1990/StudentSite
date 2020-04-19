@@ -1,7 +1,9 @@
 package servlets;
 
 import model.Student;
-import repository.DataFile;
+import repository.DataAtFile;
+import repository.DataAtList;
+import repository.DataMaster;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +15,11 @@ import java.util.List;
 
 @WebServlet
 public class ChangeStudent extends HttpServlet {
+    DataMaster dataMaster = new DataAtFile();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        DataFile dataFile = new DataFile();
+
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
 
@@ -25,12 +28,12 @@ public class ChangeStudent extends HttpServlet {
         Integer mark = Integer.parseInt(req.getParameter("mark"));
         Student toChangeMark = new Student(lastName, firstName, mark);
 
-        List<Student> everyBody = dataFile.getData();
+        List<Student> everyBody = dataMaster.getData();
 
         if (everyBody.contains(toChangeMark)) {
             everyBody.remove(toChangeMark);
             everyBody.add(toChangeMark);
-            dataFile.putData(everyBody);
+            dataMaster.putData(everyBody);
             resp.getWriter().println("<h2 align='center'>" + "Оценка изменена"+ "</H2>"+
                     "<form align='center' action='index.html'>" +
                     "<p><button  style='font-size: 20px; height: 40px; width: 200px'>На главную</button></p>" +

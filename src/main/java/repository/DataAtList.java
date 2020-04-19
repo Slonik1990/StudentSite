@@ -6,7 +6,7 @@ import repository.DataMaster;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataList implements DataMaster {
+public class DataAtList implements DataMaster {
 
     private static List<Student> data = new ArrayList<>();
 
