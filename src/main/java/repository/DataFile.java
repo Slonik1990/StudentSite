@@ -1,21 +1,19 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+package repository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import model.Student;
+import repository.DataMaster;
 
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-//логика внесения изменений в хранилище студентов основана на том, что каждый сервлет для своих задач
-//получает весь список студентов и при его изменении полностью перезаписывает файл
-//исходя из этого за процесс чтения и перезаписи файла отвечает отдельный класс, в который выделен код использующийся
-//всеми сервлетами
 
-public class FileConnector {
+public class DataFile implements DataMaster {
 
     private String path = System.getProperty("user.home") + File.separator  +"students.json";
-
+    @Override
     public void putData(List<Student> students) {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(path);
@@ -31,7 +29,7 @@ public class FileConnector {
     }
 
 
-
+    @Override
     public List<Student> getData() {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Student> toReturn = new LinkedList<>();
@@ -50,6 +48,4 @@ public class FileConnector {
         }
         return toReturn;
     }
-
-
 }

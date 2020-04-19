@@ -9,7 +9,7 @@
 
     <servlet>
         <servlet-name>addServlet</servlet-name>
-        <servlet-class>CreateStudent</servlet-class>
+        <servlet-class>servlets.CreateStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addServlet</servlet-name>
@@ -18,7 +18,7 @@
 
     <servlet>
         <servlet-name>readServlet</servlet-name>
-        <servlet-class>ReadStudent</servlet-class>
+        <servlet-class>servlets.ReadStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>readServlet</servlet-name>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>deleteServlet</servlet-name>
-        <servlet-class>DeleteStudent</servlet-class>
+        <servlet-class>servlets.DeleteStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deleteServlet</servlet-name>
@@ -36,7 +36,7 @@
 
     <servlet>
         <servlet-name>updateServlet</servlet-name>
-        <servlet-class>ChangeStudent</servlet-class>
+        <servlet-class>servlets.ChangeStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>updateServlet</servlet-name>
