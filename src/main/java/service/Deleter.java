@@ -1,27 +1,24 @@
-package servlets;
+package service;
 
 import model.Student;
-import repository.DataAtFile;
-import repository.DataAtList;
 import repository.DataMaster;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 
 
-public class DeleteStudent extends HttpServlet {
-    DataMaster dataMaster = new DataAtFile();
+public class Deleter {
+    DataMaster dataMaster;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public Deleter(DataMaster dataMaster) {
+        this.dataMaster = dataMaster;
+    }
+
+    public void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
 
@@ -48,9 +45,7 @@ public class DeleteStudent extends HttpServlet {
     }
 
 
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void deleteAll(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
         List<Student> nobody = new ArrayList<>();

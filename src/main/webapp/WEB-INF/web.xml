@@ -8,39 +8,14 @@
     <display-name>My Servlets</display-name>
 
     <servlet>
-        <servlet-name>addServlet</servlet-name>
-        <servlet-class>servlets.CreateStudent</servlet-class>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>servlet.ActionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>addServlet</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>readServlet</servlet-name>
-        <servlet-class>servlets.ReadStudent</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>readServlet</servlet-name>
-        <url-pattern>/read</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>deleteServlet</servlet-name>
-        <servlet-class>servlets.DeleteStudent</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>deleteServlet</servlet-name>
-        <url-pattern>/delete</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>updateServlet</servlet-name>
-        <servlet-class>servlets.ChangeStudent</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>updateServlet</servlet-name>
-        <url-pattern>/update</url-pattern>
-    </servlet-mapping>
 
 </web-app>

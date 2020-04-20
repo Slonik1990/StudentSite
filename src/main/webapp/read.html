@@ -4,8 +4,14 @@
     <title>Поиск</title>
     <meta charset="utf-8">
 </head>
-<body align="center">
-<form action='read' method='get'>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+<body>
+<form action='/main' method='post'>
+    <input type="hidden" name="task" value="read">
 
     <h1>В данной вкладке вы можете получить полный список студентов</h1>
     <h1>либо сделать выборку по одному либо нескольким фильтрам</h1>
@@ -28,7 +34,11 @@
         <option>10</option>
 
     </select>
-    <p><button style="font-size: 30px; height: 60px; width: 300px">показать</button></p>
+    <p><button style="font-size: 30px; height: 60px; width: 300px">Показать</button></p>
+</form>
+<form action='/main' method='post'>
+    <input type="hidden" name="task" value="readAll">
+    <p><button style="font-size: 30px; height: 60px; width: 300px">Показать всех</button></p>
 </form>
 </body>
 </html>

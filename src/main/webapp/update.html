@@ -4,8 +4,14 @@
     <title>Поиск</title>
     <meta charset="utf-8">
 </head>
-<body align="center">
-<form action='update' method='post'>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+<body>
+<form action='/main' method='post'>
+    <input type="hidden" name="task" value="update">
     <h1>В данной вкладке вы можете изменить оценку студента</h1>
     Фамилия:
     <p><input name='lastName' required type="text"/></p>

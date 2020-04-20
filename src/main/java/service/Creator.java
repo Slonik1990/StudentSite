@@ -1,11 +1,9 @@
-package servlets;
+package service;
 
 import model.Student;
 import repository.DataAtFile;
-import repository.DataAtList;
 import repository.DataMaster;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +12,15 @@ import java.util.List;
 
 
 
-public class CreateStudent extends HttpServlet {
-    DataMaster dataMaster = new DataAtFile();
+public class Creator {
 
+    DataMaster dataMaster;
 
+    public Creator(DataMaster dataMaster) {
+        this.dataMaster = dataMaster;
+    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
 

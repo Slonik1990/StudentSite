@@ -1,11 +1,9 @@
-package servlets;
+package service;
 
 import model.Student;
 import repository.DataAtFile;
-import repository.DataAtList;
 import repository.DataMaster;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +14,14 @@ import java.util.List;
 
 
 
-public class ReadStudent extends HttpServlet {
-    DataMaster dataMaster = new DataAtFile();
+public class Reader{
+    DataMaster dataMaster;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public Reader(DataMaster dataMaster) {
+        this.dataMaster = dataMaster;
+    }
+
+    public void read(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
 
@@ -39,19 +40,19 @@ public class ReadStudent extends HttpServlet {
         }
 
 
-        //студенты преобразуются в листы с параметрами и происходит сравнение с пришедшими парамеирами
+        //студенты преобразуются в листы с параметрами и происходит сравнение с пришедшими параметрами
         List<Student> everyBody = dataMaster.getData();
-        List<Student> satisfied = new LinkedList<>();
+        List<Student> suitable = new ArrayList<>();
         for (Student s : everyBody) {
             List studFields = new ArrayList();
             studFields.add(s.getLastName());
             studFields.add(s.getFirstName());
             studFields.add(s.getMark());
-            if (studFields.containsAll(notNullParameters)) satisfied.add(s);
+            if (studFields.containsAll(notNullParameters)) suitable.add(s);
         }
 
 
-        if (satisfied.size() == 0) {
+        if (suitable.size() == 0) {
             resp.getWriter().println("<h2 align='center'>" + "Поиск не дал результата" + "</H2>" +
                     "<form align='center' action='index.html'>" +
                     "<p><button  style='font-size: 20px; height: 40px; width: 200px'>На главную</button></p>" +
@@ -60,11 +61,34 @@ public class ReadStudent extends HttpServlet {
         }
 
         String report = "";
-        for (Student s : satisfied) {
+        for (Student s : suitable) {
             report = report.concat("<h2 align='center'>" + s.toString() + "</h2>");
         }
 
         resp.getWriter().println(report +"<form align='center' action='index.html'>" +
+                "<p><button  style='font-size: 20px; height: 40px; width: 200px'>На главную</button></p>" +
+                "</form>");
+    }
+
+    public void readAll(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType("text/html; charset=UTF-8");
+        req.setCharacterEncoding("UTF-8");
+        List<Student> everyBody = dataMaster.getData();
+
+        if (everyBody.size() == 0) {
+            resp.getWriter().println("<h2 align='center'>" + "Поиск не дал результата" + "</H2>" +
+                    "<form align='center' action='index.html'>" +
+                    "<p><button  style='font-size: 20px; height: 40px; width: 200px'>На главную</button></p>" +
+                    "</form>");
+            return;
+        }
+
+        String report = "";
+        for (Student s : everyBody) {
+            report = report.concat("<h2 align='center'>" + s.toString() + "</h2>");
+        }
+
+        resp.getWriter().println(report + "<form align='center' action='index.html'>" +
                 "<p><button  style='font-size: 20px; height: 40px; width: 200px'>На главную</button></p>" +
                 "</form>");
     }

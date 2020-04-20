@@ -5,19 +5,24 @@
     <title>Удаление</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
-
-
-<body align="center">
-<form action='delete' method='get'>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+<body>
+<form action='/main' method='post'>
+    <input type="hidden" name="task" value="delete">
     Фамилия:
     <p><input name='lastName' required type="text"/></p>
     Имя:
     <p><input name='firstName' required type="text"></p>
-    <p> <button type='submit'> УДАЛИТЬ</button></p>
+    <p><button style="font-size: 30px; height: 60px; width: 300px">Удалить</button></p>
 </form>
 
-<form action='delete' method='post'>
-    <p> <button type='submit'> УДАЛИТЬ ВСЕХ</button></p>
+<form action='/main' method='post'>
+    <input type="hidden" name="task" value="deleteAll">
+    <p><button style="font-size: 30px; height: 60px; width: 300px">Удалить всех</button></p>
 </form>
 </body>
 </html>
