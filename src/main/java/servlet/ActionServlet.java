@@ -34,7 +34,6 @@ public class ActionServlet extends HttpServlet {
         this.updater = new Updater(dataMaster);
         this.reader = new Reader(dataMaster);
 
-
     }
 
     @Override
