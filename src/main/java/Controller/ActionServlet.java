@@ -4,6 +4,7 @@ import Repository.DataMaster;
 import Service.StudentService;
 import Service.StudentServiceImpl;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
@@ -21,8 +22,9 @@ public class ActionServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("________________init________________");
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        super.init();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         this.studentService = applicationContext.getBean(StudentService.class);
 
 
